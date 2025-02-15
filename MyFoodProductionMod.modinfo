@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="cf50b72d-f09e-49c5-aa3f-e2d9f4b1def1" version="1">
+	<Properties>
+		<Name>LOC_SHOW_FOOD_AND_PRODUCTION_NAME_JR</Name>
+		<Description>LOC_SHOW_FOOD_AND_PRODUCTION_DESCRIPTION_JR</Description>
+		<Teaser>LOC_SHOW_FOOD_AND_PRODUCTION_TEASER_JR</Teaser>
+		<Authors>xiaoxiao + JR</Authors>
+		<AffectsSavedGames>0</AffectsSavedGames>
+		<CompatibleVersions>1.2,2.0</CompatibleVersions>
+	</Properties>
+
+	<LocalizedText>
+		<Text id="LOC_SHOW_FOOD_AND_PRODUCTION_NAME_JR">
+			<en_US>JR Edition</en_US>
+			<zh_Hans_CN>在顶栏显示[ICON_FOOD]和[ICON_PRODUCTION]：JR修改版</zh_Hans_CN>
+		</Text>
+		<Text id="LOC_SHOW_FOOD_AND_PRODUCTION_DESCRIPTION_JR">
+			<en_US>Calculates total food/production for all cities and displays them in the top panel. Modified by JR.</en_US>
+			<zh_Hans_CN>计算所有城市的食物和生产总和并显示在顶栏 - JR修改.</zh_Hans_CN>
+		</Text>
+		<Text id="LOC_SHOW_FOOD_AND_PRODUCTION_TEASER_JR">
+			<en_US>JR’s version of Food/Production UI mod</en_US>
+			<zh_Hans_CN>JR的食物/生产显示版本</zh_Hans_CN>
+		</Text>
+	</LocalizedText>
+
+	<Dependencies>
+		<Mod id="4873eb62-8ccc-4574-b784-dda455e74e68" title="Expansion: Gathering Storm" />
+		<Mod id="1B28771A-C749-434B-9053-D1380C553DE9" title="Expansion: Rise and Fall" />
+	</Dependencies>
+
+	<ActionCriteria>
+		<Criteria id="Overflow">
+			<RuleSetInUse>RULESET_EXPANSION_2</RuleSetInUse>
+			<ModInUse>850b838e-bb79-49ee-b61e-e71ee75296f9</ModInUse>
+		</Criteria>
+	</ActionCriteria>
+
+	<InGameActions>
+		<ReplaceUIScript id="ShowFoodAndProductionTopPanel">
+			<Properties>
+				<LoadOrder>1</LoadOrder>
+				<LuaContext>TopPanel</LuaContext>
+				<LuaReplace>ShowFoodAndProductionTopPanel.lua</LuaReplace>
+			</Properties>
+		</ReplaceUIScript>
+		<ReplaceUIScript id="OverflowShowFoodAndProductionTopPanel" criteria="Overflow">
+			<Properties>
+				<LoadOrder>2</LoadOrder>
+				<LuaContext>TopPanel</LuaContext>
+				<LuaReplace>OverflowShowFoodAndProductionTopPanel.lua</LuaReplace>
+			</Properties>
+		</ReplaceUIScript>
+
+	</InGameActions>
+
+<Files>
+  <File>ShowFoodAndProductionTopPanel.lua</File>
+  <File>OverflowShowFoodAndProductionTopPanel.lua</File>
+</Files>
+
+</Mod>
