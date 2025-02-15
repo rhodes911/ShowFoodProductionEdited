@@ -51,7 +51,9 @@
 				<LuaReplace>OverflowShowFoodAndProductionTopPanel.lua</LuaReplace>
 			</Properties>
 		</ReplaceUIScript>
-
+		<AddGameplayScripts>
+			<File>Gameplay/OverflowBugFixGameplay.lua</File>
+		</AddGameplayScripts>
 	</InGameActions>
 
 <Files>
