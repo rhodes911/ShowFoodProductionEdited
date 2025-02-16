@@ -41,6 +41,8 @@ local m_CultureYieldButton	:table = nil;
 local m_GoldYieldButton		:table = nil;
 local m_TourismYieldButton	:table = nil;
 local m_FaithYieldButton	:table = nil;
+local m_FaithYieldButton2	:table = nil;
+local m_PopulationButton 	:table = nil;
 
 
 -- Turn-based gold thresholds:
@@ -200,8 +202,29 @@ function RefreshYields()
 		m_FaithYieldButton.YieldPerTurn:SetText( FormatValuePerTurn(faithYield) );
 		m_FaithYieldButton.YieldBacking:SetToolTipString( GetFaithTooltip() );
 		m_FaithYieldButton.YieldIconString:SetText("[ICON_FaithLarge]");
-		m_FaithYieldButton.YieldButtonStack:CalculateSize();	
+		m_FaithYieldButton.YieldButtonStack:CalculateSize();
+		
 	end
+
+		---- POPULATION ----
+	-- New section: calculate total population and breakdown per city.
+	local totalPopulation = 0;
+	local populationTooltip = "";
+	for _, city in localPlayer:GetCities():Members() do
+		local cityPopulation = city:GetPopulation();  -- Ensure this API returns the city's population
+		totalPopulation = totalPopulation + cityPopulation;
+		populationTooltip = populationTooltip .. "[NEWLINE]" .. Locale.Lookup(city:GetName()) .. ": " .. cityPopulation;
+	end
+	-- Prepend the total and an icon (adjust the icon as needed)
+	populationTooltip = Locale.ToNumber(totalPopulation) .. " [ICON_Citizen]" .. populationTooltip;
+	
+	m_PopulationButton = m_PopulationButton or m_YieldButtonSingleManager:GetInstance();
+	m_PopulationButton.YieldPerTurn:SetText( Locale.ToNumber(totalPopulation) );
+	m_PopulationButton.YieldBacking:SetToolTipString( populationTooltip );
+	m_PopulationButton.YieldIconString:SetText("[ICON_Citizen ]");
+	m_PopulationButton.YieldPerTurn:SetColorByName("ResPopulationLabelCS");
+	m_PopulationButton.YieldBacking:SetColorByName("ResPopulationLabelCS");
+	m_PopulationButton.YieldButtonStack:CalculateSize();
 
     ---- GOLD ----
     if GameCapabilities.HasCapability("CAPABILITY_GOLD") and GameCapabilities.HasCapability("CAPABILITY_DISPLAY_TOP_PANEL_YIELDS") then

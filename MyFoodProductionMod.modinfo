@@ -11,7 +11,7 @@
 
 	<LocalizedText>
 		<Text id="LOC_SHOW_FOOD_AND_PRODUCTION_NAME_JR">
-			<en_US>JR Edition</en_US>
+			<en_US>JR Editions</en_US>
 			<zh_Hans_CN>在顶栏显示[ICON_FOOD]和[ICON_PRODUCTION]：JR修改版</zh_Hans_CN>
 		</Text>
 		<Text id="LOC_SHOW_FOOD_AND_PRODUCTION_DESCRIPTION_JR">
