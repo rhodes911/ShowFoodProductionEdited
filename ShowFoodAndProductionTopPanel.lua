@@ -221,7 +221,7 @@ function RefreshYields()
 	m_PopulationButton = m_PopulationButton or m_YieldButtonSingleManager:GetInstance();
 	m_PopulationButton.YieldPerTurn:SetText( Locale.ToNumber(totalPopulation) );
 	m_PopulationButton.YieldBacking:SetToolTipString( populationTooltip );
-	m_PopulationButton.YieldIconString:SetText("[ICON_Citizen ]");
+	m_PopulationButton.YieldIconString:SetText("[ICON_Citizen]");
 	m_PopulationButton.YieldPerTurn:SetColorByName("ResPopulationLabelCS");
 	m_PopulationButton.YieldBacking:SetColorByName("ResPopulationLabelCS");
 	m_PopulationButton.YieldButtonStack:CalculateSize();
